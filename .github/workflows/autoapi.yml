@@ -1,4 +1,4 @@
-#每6小时调用一次（周六日不启动）
+#每3小时调用一次（周六日不启动）
 name: Auto Api Pro
 
 on: 
@@ -56,11 +56,7 @@ jobs:
         CLIENT_ID_n: ${{ secrets.CLIENT_ID_n }}
         CLIENT_SECRET_n: ${{ secrets.CLIENT_SECRET_n }}
       run: |
-        python runapi.py
         echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
-
-    - name: Commit #上传运行开始时间
-      run: |
         git config --global user.email AutoupdateRobot@email.com
         git config --global user.name AutoupdateRobot
         git add .
@@ -71,3 +67,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: main
+    
+    - name: runapi
+      run: |
+        python runapi.py
