@@ -56,18 +56,4 @@ jobs:
         CLIENT_ID_n: ${{ secrets.CLIENT_ID_n }}
         CLIENT_SECRET_n: ${{ secrets.CLIENT_SECRET_n }}
       run: |
-        echo `date +"%Y-%m-%d %H:%M:%S"` begin > time.log
-        git config --global user.email AutoupdateRobot@email.com
-        git config --global user.name AutoupdateRobot
-        git add .
-        git commit -m "update begin time" -a
-        
-    - name: Push changes
-      uses: ad-m/github-push-action@master
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        branch: main
-    
-    - name: runapi
-      run: |
         python runapi.py
