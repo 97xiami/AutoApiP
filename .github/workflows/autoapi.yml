@@ -51,15 +51,15 @@ jobs:
         python runapi.py > log.txt
         cat log.txt
 
-    - name: Commit #上传新的refresh_token到仓库
+    - name: upload log #上传运行日志
       run: |
         git config --global user.email AutoupdateRobot@email.com
         git config --global user.name AutoupdateRobot
         git add .
         git commit -m "upload log" -a
     
-    - name: Push changes
+    - name: Push
       uses: ad-m/github-push-action@master
       with:
         github_token: ${{ secrets.GH_TOKEN }}
-        branch: main
+        branch: master
