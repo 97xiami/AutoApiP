@@ -49,4 +49,5 @@ jobs:
         CLIENT_SECRET_n: ${{ secrets.CLIENT_SECRET_n }}
       run: |
         python runapi.py > log.txt
+        echo "cat log.txt"
         cat log.txt
